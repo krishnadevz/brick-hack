@@ -3,6 +3,9 @@
 
 <head>
     <title>BrickHack</title>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="form2.js"></script>
     <style>
         body {
             background-image: url(cat.png);
@@ -69,9 +72,10 @@
             Welcome To Our "Brick CATft"
         </h1>
     </div>
-    <center> 
-        <a href="room.html" class="model">&#8250; LET'S START</a>
+    <center>
+        <!--  <a href="room.html" class="model">&#8250; LET'S START</a>-->
         <a href="login.html" class="model">&#8250; Login</a>
+        <a href="javascript:void(0);" onclick="signOut()" class="model"> &#8250; Sign Out</a>
 
     </center>
 

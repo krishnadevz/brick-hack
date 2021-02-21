@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html class="w3-animate-zoom" lang="en">
+<html lang="en">
 
 <head>
 
     <meta charset="UTF-8" />
-    <title>SIGN UP</title>
+    <title>LoG IN</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="form.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Cormorant' rel='stylesheet'>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href='https://fonts.googleapis.com/css?family=Allura' rel='stylesheet'>
@@ -72,25 +76,26 @@
                 </div>
                 <!-- HTML Form-->
                 <div class="column">
-                    <form>
+                    <div>
                         <fieldset>
                             <legend><em>LOG IN PLEASE</em></legend>
                             <section style="width: 95%;">
                                 <h2 style="color: antiquewhite;">How's your day</h2>
-                                <label for="email"><b>Email</b></label>
-                                <input type="email" placeholder="Enter Email" name="uname" required>
+                                <label><b>Email</b></label>
+                                <input type="email" placeholder="Enter Email" id="emailLogIn" required>
 
-                                <label for="psw"><b>Password</b></label>
-                                <input type="password" placeholder="Enter Password" name="psw" required>
+                                <label><b>Password</b></label>
+                                <input type="password" placeholder="Enter Password" id="passwordLogIn" required>
 
-                                <button type="submit">Login</button>
-                                <button onclick="document.getElementById('id01').style.display='block'">Sign Up</button> <br>
+                                <button onclick="logIn()" id="logIn">Log In</button>
+                                <button onclick="document.getElementById('id01').style.display='block' ">Sign Up</button> <br>
+                                <button><a style="text-decoration: none;" href="index.html">BACK TO HOME PAGE</a> </button>
                                 <label>
                                       <input type="checkbox" checked="checked" name="remember"> Remember me
                                     </label>
                             </section>
                         </fieldset>
-                    </form>
+                    </div>
 
                 </div>
             </div>
@@ -109,7 +114,7 @@
                     </div>
                     <!-- HTML Form-->
                     <div class="column">
-                        <form class="modal-content animate">
+                        <div class="modal-content animate">
                             <fieldset>
                                 <legend><em>SIGN UP PLEASE</em></legend>
                                 <section style="width: 95%;">
@@ -118,13 +123,15 @@
                                     <input type="text" id="fname" name="firstname" placeholder="Your first name.." required>
                                     <label for="lname">Last Name</label>
                                     <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
-                                    <label for="email">Your e-mail</label><br>
-                                    <input type="email" id="email" name="email" placeholder="name@example.com" required><br><br>
-                                    <label for="psw"><b>Password</b></label><br>
-                                    <input type="password" placeholder="Enter Password" name="psw" required><br><br>
 
-                                    <label for="psw-repeat"><b>Repeat Password</b></label><br>
-                                    <input type="password" placeholder="Repeat Password" name="psw-repeat" required><br><br>
+                                    <label>Your e-mail</label><br>
+                                    <input type="email" id="email" placeholder="name@example.com" required><br><br>
+
+                                    <label><b>Password</b></label><br>
+                                    <input type="password" placeholder="Enter Password" id="password" required><br><br>
+
+                                    <!--   <label for="psw-repeat"><b>Repeat Password</b></label><br>
+                                    <input type="password" placeholder="Repeat Password" name="psw-repeat" required><br><br> -->
 
                                     <label for="country">Country</label>
                                     <!--Label select-->
@@ -376,7 +383,7 @@
                                 <option value="Zambia">Zambia</option>
                                 <option value="Zimbabwe">Zimbabwe</option>
                              </select>
-                                    <button type="submit">Sign Up</button><br>
+                                    <button onclick="signUp()" id="signUp">Sign Up</button><br>
                                     <label>
                                 <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me 
                               </label>
@@ -388,7 +395,7 @@
                                     </div>
                                 </section>
                             </fieldset>
-                        </form>
+                        </div>
 
                     </div>
                 </div>
@@ -409,42 +416,7 @@
         }
     </script>
 
-    <!--Firebase SDK snippet-->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/8.2.9/firebase-app.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="/__/firebase/8.2.9/firebase-analytics.js"></script>
-
-    <!-- Initialize Firebase -->
-    <script src="/__/firebase/init.js"></script>
-    <!--Firebase SDK snippet-->
-
-
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
-
-    <script>
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        var firebaseConfig = {
-            apiKey: "AIzaSyCXyrXMi5wJtV0Zz_Pna4Era1gVTgXGczQ",
-            authDomain: "brick-hack-2021-49c9e.firebaseapp.com",
-            projectId: "brick-hack-2021-49c9e",
-            storageBucket: "brick-hack-2021-49c9e.appspot.com",
-            messagingSenderId: "868145765262",
-            appId: "1:868145765262:web:33c76b1d72bc36cd2ee2df",
-            measurementId: "G-RMTQK5WNV2"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-    </script>
 
 </body>
 
